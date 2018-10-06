@@ -32,4 +32,3 @@ The project deals with the gene expression analysis in Drosophila model of Trans
   - what fraction of genes are expressed in opposite direction as compare to F0 high sugar treatment in each sex?
 4. If tryglcerides levels in all generation is in concordance with the gene expression profile? 
 
-![Arrange the folder like this](https://leanpub.com/course_images1/cbds-organizing-31LCnan3wMzZBl-I6xTsJQ/8/images----06_nav_terminal----06_fileorganization_nav_terminal-4.png)
