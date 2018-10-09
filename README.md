@@ -1,3 +1,8 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # Differential gene expression microarray analysis in paternal diet induced Trangenerational epigenetic inheritance model in Drosophila melanogaster
 All the microarray analysis related to Transgenerational epigenetic inheritance in drosophila melanogaster.
 
@@ -32,3 +37,5 @@ The project deals with the gene expression analysis in Drosophila model of Trans
   - what fraction of genes are expressed in opposite direction as compare to F0 high sugar treatment in each sex?
 4. If tryglcerides levels in all generation is in concordance with the gene expression profile? 
 
+## For data visualization refer to this paper
+* [limma powers differential expression analyses for RNA-sequencing and microarray studies](https://academic.oup.com/nar/article/43/7/e47/2414268)
