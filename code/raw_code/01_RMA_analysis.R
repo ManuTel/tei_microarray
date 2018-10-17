@@ -42,3 +42,18 @@ f2_femaleHS <- exprs_mtrx(all, "Female", "F2", "HSD")
 all_df   <- lapply(ls(pattern = "^f.*"), get)
 all_mtrx <- do.call("cbind.data.frame", all_df)
 write.csv(all_mtrx, file = "./data/tidy_data/expressionset_matrix.csv")
+
+## Plot MA for all the expressionset
+eset <- read.csv("./data/tidy_data/expressionset_matrix.csv")
+
+ematrix <- as.matrix(eset[-1])
+rownames(ematrix) <- eset$X
+
+x <- t(ematrix)
+pc <- prcomp(x)
+names(pc)
+plot(pc$x[, 1], pc$x[, 2], main = "PCA", xlab = "PC1", ylab = "PC2")
+
+library(rafalib)
+gender <- as.fumeric(as.character(a:b))
+plot(pc$x[, 1], pc$x[, 2], main = "PCA", xlab = "PC1", ylab = "PC2", col = gender)

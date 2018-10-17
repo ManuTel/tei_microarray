@@ -11,7 +11,6 @@ fold_change <- function(exps, sex = c("Female", "Male"), gen = c("F0","F1", "F2"
                   efitlm        <- exps_rma %>% lmFit(design) %>% eBayes()
                   print(topTable(efitlm, coef = 2, sort.by = "p", genelist = link))
                   return(efitlm)
-                        
                   }
 
 ## Read .cel files with there phenodata ####
@@ -29,6 +28,11 @@ link      <- unlist(mget(featureNames(all), envir =  drosophila2SYMBOL))
 ## calculate fold change for each group with simple design of CASE vs CONTROL ####
 ## Later we will focus on sex*interaction design at least in case of F0. since all the samples of F0 were processed in one batch
 f0_male   <- fold_change(all, "Male", "F0")
+
+
+
+
+
 f0_female <- exprs_mtrx(all, "Female", "F0")
 
 f1_male     <- exprs_mtrx(all, "Male", "F1", "CD")
