@@ -1,9 +1,9 @@
 ##install necessary packages if not installed
 
-list.of.packages <- c("ggplot2", "dplyr", "purrr", "ggpubr", "ggsci", "gridExtra",
-                      "affy", "limma", "drosophila2.db", "drosophila2cdf", "broom", "tidyr")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages,verbose=FALSE,quiet=TRUE)
+list_packages <- c("ggplot2", "dplyr", "purrr", "ggpubr", "ggsci", "gridExtra",
+                       "broom", "tidyr")
+new_packages <- list_packages[!(list_packages %in% installed.packages()[,"Package"])]
+if(length(new_packages)) install.packages(new_packages,verbose=FALSE,quiet=TRUE)
 
 ## load necessary R packages ####
 library(affy)
