@@ -90,6 +90,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -100,14 +103,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -132,7 +195,7 @@ $(document).ready(function () {
 <th align="center">Generation</th>
 <th align="center">Gender</th>
 <th align="center">Comparision</th>
-<th align="right">Diet</th>
+<th align="center">Diet</th>
 </tr>
 </thead>
 <tbody>
@@ -141,70 +204,70 @@ $(document).ready(function () {
 <td align="center">F0</td>
 <td align="center">Male</td>
 <td align="center">High sugar vs CD</td>
-<td align="right"><em>NA</em></td>
+<td align="center"><em>NA</em></td>
 </tr>
 <tr class="even">
 <td>02</td>
 <td align="center">F0</td>
 <td align="center">Female</td>
 <td align="center">High sugar vs CD</td>
-<td align="right"><em>NA</em></td>
+<td align="center"><em>NA</em></td>
 </tr>
 <tr class="odd">
 <td>03</td>
 <td align="center">F1</td>
 <td align="center">Male</td>
 <td align="center">Case vs Control</td>
-<td align="right">Control</td>
+<td align="center">Control</td>
 </tr>
 <tr class="even">
 <td>04</td>
 <td align="center">F1</td>
 <td align="center">Male</td>
 <td align="center">Case vs Control</td>
-<td align="right">High sugar</td>
+<td align="center">High sugar</td>
 </tr>
 <tr class="odd">
 <td>05</td>
 <td align="center">F1</td>
 <td align="center">Female</td>
 <td align="center">Case vs Control</td>
-<td align="right">Control</td>
+<td align="center">Control</td>
 </tr>
 <tr class="even">
 <td>06</td>
 <td align="center">F1</td>
 <td align="center">Female</td>
 <td align="center">Case vs Control</td>
-<td align="right">High sugar</td>
+<td align="center">High sugar</td>
 </tr>
 <tr class="odd">
 <td>07</td>
 <td align="center">F2</td>
 <td align="center">Male</td>
 <td align="center">Case vs Control</td>
-<td align="right">Control</td>
+<td align="center">Control</td>
 </tr>
 <tr class="even">
 <td>08</td>
 <td align="center">F2</td>
 <td align="center">Male</td>
 <td align="center">Case vs Control</td>
-<td align="right">High sugar</td>
+<td align="center">High sugar</td>
 </tr>
 <tr class="odd">
 <td>09</td>
 <td align="center">F2</td>
 <td align="center">Female</td>
 <td align="center">Case vs Control</td>
-<td align="right">Control</td>
+<td align="center">Control</td>
 </tr>
 <tr class="even">
 <td>10</td>
 <td align="center">F2</td>
 <td align="center">Female</td>
 <td align="center">Case vs Control</td>
-<td align="right">High sugar</td>
+<td align="center">High sugar</td>
 </tr>
 </tbody>
 </table>
@@ -212,24 +275,20 @@ $(document).ready(function () {
 <h2>Objectives of the analysis is</h2>
 <ol style="list-style-type: decimal">
 <li>To find out the effect of 2-week high sugar diet on the gene expression profile in both sexes of <em>Drosophila melanogaster</em></li>
-<li>F1 generation:</li>
-</ol>
+<li>F1 generation:
 <ul>
 <li>What is the effect of F0 male parent diet(high sugar vs control) on the F1 progeny’s gene expression pattern.</li>
 <li>Is it F1 progeny sex-specific?</li>
 <li>what fraction of genes are expressed in same direction as compare to F0 high sugar treatment in each sex?</li>
 <li>what fraction of genes are expressed in opposite direction as compare to F0 high sugar treatment in each sex?</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>F2 generation:</li>
-</ol>
+</ul></li>
+<li>F2 generation:
 <ul>
 <li>What is the effect of F0 male parent diet(high sugar vs control) on the F2 progeny’s gene expression pattern.</li>
 <li>Is it F2 progeny sex-specific?</li>
 <li>what fraction of genes are expressed in same direction as compare to F0 high sugar treatment in each sex?</li>
 <li>what fraction of genes are expressed in opposite direction as compare to F0 high sugar treatment in each sex?</li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
+</ul></li>
 <li>If tryglcerides levels in all generation is in concordance with the gene expression profile?</li>
 </ol>
 </div>
@@ -238,6 +297,84 @@ $(document).ready(function () {
 <ul>
 <li><a href="https://academic.oup.com/nar/article/43/7/e47/2414268">limma powers differential expression analyses for RNA-sequencing and microarray studies</a></li>
 </ul>
+</div>
+<div id="key-findings-in-eda" class="section level2">
+<h2>Key findings in EDA</h2>
+<div id="number-of-genes-which-are-differentially-expressed-absfc-1.3-and-p-value-0.05" class="section level3">
+<h3>Number of genes which are differentially expressed (abs(FC) &gt;= 1.3 and p-value &lt; 0.05)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th align="right">Total</th>
+<th align="right">up</th>
+<th align="right">down</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f0_female</td>
+<td align="right">1845</td>
+<td align="right">856</td>
+<td align="right">989</td>
+</tr>
+<tr class="even">
+<td>f0_male</td>
+<td align="right">728</td>
+<td align="right">249</td>
+<td align="right">479</td>
+</tr>
+<tr class="odd">
+<td>f1_femaleHS</td>
+<td align="right">127</td>
+<td align="right">72</td>
+<td align="right">55</td>
+</tr>
+<tr class="even">
+<td>f1_femaleLS</td>
+<td align="right">206</td>
+<td align="right">181</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td>f1_maleHS</td>
+<td align="right">36</td>
+<td align="right">9</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td>f1_maleLS</td>
+<td align="right">181</td>
+<td align="right">128</td>
+<td align="right">53</td>
+</tr>
+<tr class="odd">
+<td>f2_femaleHS</td>
+<td align="right">160</td>
+<td align="right">69</td>
+<td align="right">91</td>
+</tr>
+<tr class="even">
+<td>f2_femaleLS</td>
+<td align="right">242</td>
+<td align="right">84</td>
+<td align="right">158</td>
+</tr>
+<tr class="odd">
+<td>f2_maleHS</td>
+<td align="right">101</td>
+<td align="right">88</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td>f2_maleLS</td>
+<td align="right">484</td>
+<td align="right">407</td>
+<td align="right">77</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 

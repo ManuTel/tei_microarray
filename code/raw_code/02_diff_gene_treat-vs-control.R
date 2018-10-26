@@ -8,6 +8,7 @@ library(dplyr)
 library(tidyr)
 library(purrr)
 library(broom)
+library(tibble)
 library(ggplot2)
 library(ggsci)
 library(ggpubr)
@@ -39,12 +40,8 @@ link      <- unlist(mget(featureNames(all), envir =  drosophila2SYMBOL))
 
 ## calculate fold change for each group with simple design of CASE vs CONTROL ####
 
-f0_male   <- fold_change(all, "Male", "F0"); f0_male["group"] <- "f0_male"
-## we will be using p-value cutoff 0.05 and fold change >= 1.3
-sum(f0_male$P.Value < 0.05 & abs(f0_male$logFC) >= 0.3785116) 
-sum(f0_male$P.Value < 0.05 & 2^abs(f0_male$logFC) >= 1.3)
-
-f0_female <- fold_change(all, "Female", "F0"); f0_female["group"] <- "f0_female"
+f0_male     <- fold_change(all, "Male", "F0");          f0_male["group"]     <- "f0_male"
+f0_female   <- fold_change(all, "Female", "F0");        f0_female["group"]   <- "f0_female"
 
 f1_maleLS   <- fold_change(all, "Male", "F1", "CD");    f1_maleLS["group"]   <- "f1_maleLS"
 f1_maleHS   <- fold_change(all, "Male", "F1", "HSD");   f1_maleHS["group"]   <- "f1_maleHS"
@@ -58,5 +55,7 @@ f2_femaleHS <- fold_change(all, "Female", "F2", "HSD"); f2_femaleHS["group"] <- 
 
 ## combine all the foldchange ####
 all_df   <- lapply(ls(pattern = "^f[0-2].*"), get)
-all_fc   <- do.call("rbind.data.frame", all_df)
-## write.csv(all_fc, file = "./data/tidy_data/foldchange_df.csv")
+all_df   <- map2(all_df, "probe_id", rownames_to_column)
+all_fc   <- bind_rows(all_df)
+write.csv(all_fc, file = "./data/tidy_data/foldchange_df.csv", row.names = FALSE)
+

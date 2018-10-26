@@ -39,6 +39,7 @@ f2_femaleLS <- exprs_mtrx(all, "Female", "F2", "CD")
 f2_femaleHS <- exprs_mtrx(all, "Female", "F2", "HSD")
 
 ## combine all the expression set ####
+###CHANGE the do.call function ot bindrows afterwards #### See script 02_diff_gene_treat-vs-control.R
 all_df   <- lapply(ls(pattern = "^f.*"), get)
 all_mtrx <- do.call("cbind.data.frame", all_df)
 write.csv(all_mtrx, file = "./data/tidy_data/expressionset_matrix.csv")
