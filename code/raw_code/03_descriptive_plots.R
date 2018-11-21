@@ -82,4 +82,41 @@ m2 <- m2[rowSums(m2) !=0, ]
 
 
 ## volcano plots ##
+# add new boolean column to colour significant FC differently
+fc <- mutate(fc, signFC = as.factor(P.Value < 0.05 & 2^abs(logFC) >= 1.3))
+table(fc$group, fc$signFC)
+
+#f0 plots 
+gg <- fc %>% 
+        filter(group == "f0_male") %>%
+          ggplot(aes(x = logFC, y = -log10(P.Value), col = signFC)) +
+            geom_point(alpha = 0.5, size = 2, shape = 16) +
+            xlim(c(-8,8)) + ylim(c(0,15)) + 
+            xlab("log2 fold change") + ylab("-log10 p-value") + 
+            scale_color_manual(values = c("grey50", "red3")) +
+            theme_minimal() +
+            theme(legend.position = "none",
+                  axis.title     = element_text(size = 14, color = "black"),
+                  axis.text     = element_text(size = 12, color = "black"))
+gg
+gg2 <- gg %+% filter(fc, group == "f0_female")
+# f1-f2 plots        minFC         maxFC
+# f1_femaleHS       -2.30         1.07 
+# f1_femaleLS       -1.14         2.52 
+# f1_maleHS         -2.04         0.795
+# f1_maleLS         -1.49         2.57 
+gg3 <- fc %>% 
+  filter(group == "f2_maleHS") %>%
+  ggplot(aes(x = logFC, y = -log10(P.Value), col = signFC)) +
+  geom_point(alpha = 0.5, size = 2, shape = 16) +
+  xlim(c(-4,4)) + ylim(c(0,8)) + 
+  xlab("log2 fold change") + ylab("-log10 p-value") + 
+  scale_color_manual(values = c("grey50", "red3")) +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.title     = element_text(size = 14, color = "black"),
+        axis.text     = element_text(size = 12, color = "black"))
+gg4 <- gg3 %+% filter(fc, group == "f2_femaleHS")
+gg4
+grid.arrange(gg3, gg4, ncol = 2)
 
