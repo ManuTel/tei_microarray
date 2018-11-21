@@ -52,6 +52,34 @@ fc_2793 <- fc %>%
               spread(group, logFC)
 
 ## Save outputs in RData
-save(sign_fc, fc_2793, fc_1620, updown, file = "./data/tidy_data/diff_fc.RData")
-heatmap(as.matrix(fc_1620[3:11]), Colv = NA)
-  
+# save(sign_fc, fc_2793, fc_1620, updown, file = "./data/tidy_data/diff_fc.RData")
+
+## load RData
+load("./data/tidy_data/diff_fc.RData")
+abc <- sign_fc %>%
+          select(probe_id, ID, logFC, group) %>%
+              spread(group, logFC) %>%
+              mutate_at(vars(starts_with("f")), funs(ifelse( . > 0, 1, -1))) %>%
+              mutate_at(vars(starts_with("f")), funs(replace(., is.na(.), 0)))
+
+m <- as.matrix(abc[3:12])
+rownames(m) <- abc$probe_id
+breaks    <- c(-2,-1,0,1)
+library(gplots)
+gradient2 <- c("green", "grey55", "red")
+
+dev.new(width=4, height=12)
+heatmap.2(m,scale="none",breaks=breaks,col=gradient2, Colv = FALSE,
+          trace="none", dendrogram = 'none',cexRow=0.6,cexCol=0.8,lhei = c(0.05,5),
+          margin=c(7,10),lwid=c(4,2.0))
+
+abc2 <- abc %>% select(-contains("HS"))
+m2 <- as.matrix(abc2[4:8])
+m2 <- m2[rowSums(m2) !=0, ]
+
+## heatmap conclusion ####
+## it doesn't give any insides into data structure and useless ##
+
+
+## volcano plots ##
+
