@@ -81,7 +81,7 @@ m2 <- m2[rowSums(m2) !=0, ]
 ## it doesn't give any insides into data structure and useless ##
 
 
-## volcano plots ##
+## volcano plots ####
 # add new boolean column to colour significant FC differently
 fc <- mutate(fc, signFC = as.factor(P.Value < 0.05 & 2^abs(logFC) >= 1.3))
 table(fc$group, fc$signFC)
@@ -120,3 +120,25 @@ gg4 <- gg3 %+% filter(fc, group == "f2_femaleHS")
 gg4
 grid.arrange(gg3, gg4, ncol = 2)
 
+## TRY HEATMAPS ONLY FOR F0 MALE FEMALE DATA FOR DIFF EXPRESSED GENES ####
+## F0 heatmap only, find gene that is differentially expressed at least in one sex 
+
+fc <- mutate(fc, signFC = as.factor(P.Value < 0.05 & 2^abs(logFC) >= 1.3))
+
+f0_sign <- fc %>%
+            filter(signFC == TRUE & str_detect(group, "f0")) %>%
+              select(probe_id, ID, logFC, group) %>%
+              droplevels() %>%
+                spread(group, logFC)
+m <- as.matrix(f0_sign[3:4])
+rownames(m)  <- f0_sign$probe_id
+head(m)
+m[is.na(m)]  <- -10
+breaks    <- c(-10, seq(min(f0_sign[, 3:4], na.rm = TRUE),max(f0_sign[, 3:4], na.rm = TRUE),length.out=10))
+gradient  <- colorpanel( 9, "green", "red" )
+hm.colors <- c('grey55',gradient)
+dev.new(width=4, height=12)
+heatmap.2(m,scale="none",breaks=breaks,col=hm.colors,trace="none", 
+          dendrogram = 'none')
+## heatmap conclusion #### 
+## Again bad idea to plot heatmap :( :( ##
