@@ -85,6 +85,14 @@ Reduce(intersect, split(abc$ID, abc$group))
 ## compare with normal HS vs Ls comparison per sex
 fc   <- read.csv("./data/tidy_data/foldchange_df.csv")
 f0_in <- read.csv("./data/tidy_data/f0_diet_sex_interaction_fc.csv")
-# the fold change is similar across both the model (interaction and normal HS vs LS)
-# but interaction model has more significant results as compare to normal model
+## the fold change is similar across both the model (interaction and normal HS vs LS)
+## but interaction model has more significant results as compare to normal model
 ## do check for F1 and F2 generation
+
+## for GSEA with web browser: filter data to contain significant gene only####
+## NOTE: Don't use DAVID since it's outdated, GO database updated daily, and Reactome quarterly
+web_f0 <- f0_in %>%
+          group_by(group)%>%
+            filter(P.Value <  0.05 &
+                    2^abs(logFC) >= 1.3)
+write.csv(web_f0, file = "./data/tidy_data/sign_f0_DietSex_intr_web_gsea.csv", row.names = FALSE)         
