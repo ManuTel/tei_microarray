@@ -187,7 +187,9 @@ $(document).ready(function () {
 <div id="differential-gene-expression-microarray-analysis-in-paternal-diet-induced-trangenerational-epigenetic-inheritance-model-in-drosophila-melanogaster" class="section level1">
 <h1>Differential gene expression microarray analysis in paternal diet induced Trangenerational epigenetic inheritance model in Drosophila melanogaster</h1>
 <p>All the microarray analysis related to Transgenerational epigenetic inheritance in drosophila melanogaster.</p>
-<p>The project deals with the gene expression analysis in Drosophila model of Transgenerational epigenetic inheritance. Tha main analysis consist of following differential gene expression profile * <strong>Case</strong>: In F1 and F2 generation, Case means flies having High sugar diet fed paternal ancestry * <strong>Control</strong>: means flies having control diet fed paternal ancestry.</p>
+<p>The project deals with the gene expression analysis in Drosophila model of Transgenerational epigenetic inheritance. Tha main analysis consist of following differential gene expression profile</p>
+<pre><code>- **Case**: In F1 and F2 generation, Case means flies having High sugar diet fed paternal ancestry
+- **Control**: means flies having control diet fed paternal ancestry.</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -375,6 +377,20 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
+</div>
+<div id="note-on-go-enrichment-analysis" class="section level2">
+<h2>Note on GO enrichment analysis</h2>
+<ol style="list-style-type: decimal">
+<li>Hypergeometric tests will be used for all enrichment analysis</li>
+<li>The Gene ontology database or Affymetrix drosophila2.db database will be used as GO universe/background</li>
+<li>Don’t use DAVID since it’s outdated</li>
+<li>Decide which package should be used for analysis
+<ul>
+<li>ReactomePA/ Clusterprofiler</li>
+<li>topGO</li>
+<li>limma</li>
+</ul></li>
+</ol>
 </div>
 </div>
 

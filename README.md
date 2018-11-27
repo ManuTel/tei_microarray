@@ -2,8 +2,9 @@
 All the microarray analysis related to Transgenerational epigenetic inheritance in drosophila melanogaster.
 
 The project deals with the gene expression analysis in Drosophila model of Transgenerational epigenetic inheritance. Tha main analysis consist of following differential gene expression profile
-* **Case**: In F1 and F2 generation, Case means flies having High sugar diet fed paternal ancestry
-* **Control**: means flies having control diet fed paternal ancestry.
+
+    - **Case**: In F1 and F2 generation, Case means flies having High sugar diet fed paternal ancestry
+    - **Control**: means flies having control diet fed paternal ancestry.
 
 | Sr.no.     | Generation   | Gender | Comparision      | Diet       |
 | ---------- |:------------:|:------:|:----------------:|:---------: |
@@ -50,3 +51,11 @@ The project deals with the gene expression analysis in Drosophila model of Trans
 |f2_maleHS   |   101  |  88  |   13 |
 |f2_maleLS   |   484  | 407  |   77 |
 
+## Note on GO enrichment analysis
+1. Hypergeometric tests will be used for all enrichment analysis
+2. The Gene ontology database or Affymetrix drosophila2.db database will be used as GO universe/background
+3. Don't use DAVID since it's outdated
+4. Decide which package should be used for analysis
+    - ReactomePA/ Clusterprofiler
+    - topGO
+    - limma
