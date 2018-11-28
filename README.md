@@ -38,7 +38,7 @@ The project deals with the gene expression analysis in Drosophila model of Trans
 
 ## Key findings in EDA
 ### Number of genes which are differentially expressed (abs(FC) >= 1.3 and p-value < 0.05)
-|Group       |  Total| up   |down  |
+|Group       |  Total | up   |down  |
 |----------  | -----: |-----:|-----:|
 |f0_female   |  1845  | 856  |  989 |
 |f0_male     |   728  | 249  |  479 |
@@ -56,6 +56,6 @@ The project deals with the gene expression analysis in Drosophila model of Trans
 2. The Gene ontology database or Affymetrix drosophila2.db database will be used as GO universe/background
 3. Don't use DAVID since it's outdated
 4. Decide which package should be used for analysis
-    - ReactomePA/ Clusterprofiler
+    - ReactomePA/ Clusterprofiler (function: enrichGO with drosophila2.db)
     - topGO
     - limma
