@@ -38,6 +38,8 @@ The project deals with the gene expression analysis in Drosophila model of Trans
 
 ## Key findings in EDA
 ### Number of genes which are differentially expressed (abs(FC) >= 1.3 and p-value < 0.05)
+In this analysis, each group is RMA normalized separately instead of normalizing chips which were processed on the same day
+
 |Group       |  Total | up   |down  |
 |----------  | -----: |-----:|-----:|
 |f0_female   |  1845  | 856  |  989 |
