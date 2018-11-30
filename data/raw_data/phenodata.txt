@@ -1,81 +1,81 @@
-	sex	diet	generation	group	name
-A01_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A01
-A02_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A02
-A03_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A03
-A04_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A04
-B01_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B01
-B02_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B02
-B03_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B03
-B04_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B04
-C01_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C01
-C02_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C02
-C03_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C03
-C04_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C04
-D01_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D01
-D02_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D02
-D03_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D03
-D04_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D04
-E01_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E01
-E02_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E02
-E03_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E03
-E04_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E04
-F01_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f01
-F02_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f02
-F03_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f03
-F04_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f04
-G01_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G01
-G02_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G02
-G03_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G03
-G04_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G04
-H01_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H01
-H02_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H02
-H03_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H03
-H04_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H04
-I01_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I01
-I02_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I02
-I03_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I03
-I04_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I04
-J01_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J01
-J02_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J02
-J03_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J03
-J04_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J04
-K01_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K01
-K02_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K02
-K03_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K03
-K04_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K04
-L01_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L01
-L02_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L02
-L03_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L03
-L04_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L04
-M01_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M01
-M02_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M02
-M03_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M03
-M04_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M04
-N01_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N01
-N02_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N02
-N03_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N03
-N04_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N04
-O01_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O01
-O02_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O02
-O03_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O03
-O04_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O04
-P01_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P01
-P02_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P02
-P03_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P03
-P04_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P04
-Q01_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q01
-Q02_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q02
-Q03_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q03
-Q04_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q04
-R01_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R01
-R02_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R02
-R03_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R03
-R04_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R04
-S01_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S01
-S02_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S02
-S03_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S03
-S04_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S04
-T01_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T01
-T02_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T02
-T03_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T03
-T04_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T04
+	sex	diet	generation	group	name	batch
+A01_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A01	a
+A02_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A02	a
+A03_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A03	a
+A04_(Drosophila_2).CEL	Male	CD	F0	control	cntrl_cd_f0_male_A04	a
+C01_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C01	a
+C02_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C02	a
+C03_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C03	a
+C04_(Drosophila_2).CEL	Female	CD	F0	control	cntrl_cd_f0_female_C04	a
+B01_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B01	a
+B02_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B02	a
+B03_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B03	a
+B04_(Drosophila_2).CEL	Male	HSD	F0	case	treat_hsd_f0_male_B04	a
+D01_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D01	a
+D02_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D02	a
+D03_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D03	a
+D04_(Drosophila_2).CEL	Female	HSD	F0	case	treat_hsd_f0_female_D04	a
+E01_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E01	b
+E02_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E02	b
+E03_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E03	b
+E04_(Drosophila_2).CEL	Male	CD	F1	control	cntrl_cd_f1_male_E04	b
+G01_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G01	c
+G02_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G02	c
+G03_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G03	c
+G04_(Drosophila_2).CEL	Female	CD	F1	control	cntrl_cd_f1_female_G04	c
+I01_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I01	b
+I02_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I02	b
+I03_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I03	b
+I04_(Drosophila_2).CEL	Male	CD	F1	case	treat_cd_f1_male_I04	b
+K01_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K01	c
+K02_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K02	c
+K03_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K03	c
+K04_(Drosophila_2).CEL	Female	CD	F1	case	treat_cd_f1_female_K04	c
+F01_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f01	e
+F02_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f02	e
+F03_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f03	e
+F04_(Drosophila_2).CEL	Male	HSD	F1	control	cntrl_hsd_f1_male_f04	e
+H01_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H01	e
+H02_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H02	e
+H03_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H03	e
+H04_(Drosophila_2).CEL	Female	HSD	F1	control	cntrl_hsd_f1_female_H04	e
+J01_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J01	e
+J02_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J02	e
+J03_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J03	e
+J04_(Drosophila_2).CEL	Male	HSD	F1	case	treat_hsd_f1_male_J04	e
+L01_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L01	e
+L02_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L02	e
+L03_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L03	e
+L04_(Drosophila_2).CEL	Female	HSD	F1	case	treat_hsd_f1_female_L04	e
+M01_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M01	d
+M02_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M02	d
+M03_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M03	d
+M04_(Drosophila_2).CEL	Male	CD	F2	control	cntrl_cd_f2_male_M04	d
+O01_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O01	d
+O02_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O02	d
+O03_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O03	d
+O04_(Drosophila_2).CEL	Female	CD	F2	control	cntrl_cd_f2_female_O04	d
+Q01_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q01	d
+Q02_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q02	d
+Q03_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q03	d
+Q04_(Drosophila_2).CEL	Male	CD	F2	case	treat_cd_f2_male_Q04	d
+S01_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S01	d
+S02_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S02	d
+S03_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S03	d
+S04_(Drosophila_2).CEL	Female	CD	F2	case	treat_cd_f2_female_S04	d
+N01_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N01	f
+N02_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N02	f
+N03_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N03	f
+N04_(Drosophila_2).CEL	Male	HSD	F2	control	cntrl_hsd_f2_male_N04	f
+P01_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P01	f
+P02_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P02	f
+P03_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P03	f
+P04_(Drosophila_2).CEL	Female	HSD	F2	control	cntrl_hsd_f2_female_P04	f
+R01_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R01	f
+R02_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R02	f
+R03_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R03	f
+R04_(Drosophila_2).CEL	Male	HSD	F2	case	treat_hsd_f2_male_R04	f
+T01_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T01	f
+T02_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T02	f
+T03_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T03	f
+T04_(Drosophila_2).CEL	Female	HSD	F2	case	treat_hsd_f2_female_T04	f
