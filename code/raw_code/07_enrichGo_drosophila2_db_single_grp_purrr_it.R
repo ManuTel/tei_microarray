@@ -118,7 +118,7 @@ fc_nest <- fc_nest %>% mutate(up_gobp = map2(uplist, data, df_enrichgo))
 
 ## 11th column: go enrichment for down regulated genes
 fc_nest <- fc_nest %>% mutate(dn_gobp = map2(dnlist, data, df_enrichgo))
-save(fc_nest,file = "./data/tidy_data/enrichgobp_all.RData")
+# save(fc_nest,file = "./data/tidy_data/enrichgobp_all.RData")
 load("./data/tidy_data/enrichgobp_all.RData")
 
 ## use unnest to extract 3 columns for each group ####
@@ -137,3 +137,4 @@ dn_gobp   <- fc_nest %>%
               mutate(dn_gobpdf = map(dn_gobp, function(x) as.data.frame(x))) %>%
                 select(group, dn_gobpdf) %>%
                   unnest(dn_gobpdf)
+save(updn_gobp, up_gobp, dn_gobp,file = "./data/tidy_data/gobp_df.RData")
