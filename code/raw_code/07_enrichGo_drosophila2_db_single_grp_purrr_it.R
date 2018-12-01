@@ -4,7 +4,7 @@
 
 ## Load necessary packages ####
 source('code/raw_code/00_packages.R')
-
+rm(list =ls())
 ## Load the foldchange data from csv file of interest ####
 fcdata <- read.csv("./data/tidy_data/foldchange_df.csv")
 
@@ -67,3 +67,59 @@ egobp_dn <- enrichGO(gene          = dngene,
 
 ## extract gene symbol and entrezid from drosophila2.db for respective probes
 keytypes(drosophila2.db)
+
+## purrr it ####
+fc_nest <- fcdata %>% nest(-group)
+
+## 3rd column as signfc: significant foldchange subset
+sign_filter <- function(df) { df %>% 
+                              filter(P.Value < 0.05 & 2^abs(logFC) >=1.3) %>%
+                              arrange(desc(logFC))
+                                }
+fc_nest <- fc_nest %>%
+              mutate(signfc = map(data, sign_filter))
+glimpse(fc_nest$signfc)
+## 4th column as genelist
+fc_nest <- fc_nest %>%
+              mutate(genelist = map(signfc, function(df) pull(df, probe_id)))
+object.size(fc_nest)
+## 5th column: perform gene enrichment analysis for updown genes
+df_enrichgo <- function(x, df) {
+                           enrichGO(gene    = x,
+                              universe      = df$probe_id,
+                              OrgDb         = drosophila2.db,
+                              keyType       = "PROBEID", 
+                              ont           = "BP",
+                              pAdjustMethod = "BH",
+                              pvalueCutoff  =  1,
+                              qvalueCutoff  =  1,
+                              readable      = TRUE)}
+fc_nest <- fc_nest %>% mutate(gobp = map2(genelist, data, df_enrichgo))
+
+## 6th column: up_signfc: significant foldchange up regulated only
+fc_nest <- fc_nest %>%
+              mutate(up_signfc = map(signfc, function(df) filter(df, logFC > 0)))
+map(fc_nest$up_signfc, dim)
+## 7th column as up genelist
+fc_nest <- fc_nest %>%
+              mutate(uplist = map(up_signfc, function(df) pull(df, probe_id)))
+
+
+## 8th column: dn_signfc: significant foldchange down regulated only
+fc_nest <- fc_nest %>%
+              mutate(dn_signfc = map(signfc, function(df) filter(df, logFC < 0)))
+map(fc_nest$dn_signfc, dim)
+## 9th column as down genelist
+fc_nest <- fc_nest %>%
+  mutate(dnlist = map(dn_signfc, function(df) pull(df, probe_id)))
+
+## 10th column: go enrichment for up regulated genes
+fc_nest <- fc_nest %>% mutate(up_gobp = map2(uplist, data, df_enrichgo))
+
+## 11th column: go enrichment for down regulated genes
+fc_nest <- fc_nest %>% mutate(dn_gobp = map2(dnlist, data, df_enrichgo))
+save(fc_nest,file = "./data/tidy_data/enrichgobp_all.RData")
+
+## use unnest to extract 3 columns for each group
+## gobp, up_gobp, dn_gopb
+names(fc_nest)
