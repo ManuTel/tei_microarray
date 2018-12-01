@@ -12,7 +12,7 @@ fcdata <- read.csv("./data/tidy_data/foldchange_df.csv")
 library(clusterProfiler)
 data(geneList) ## NOTE: the genelist is ordered foldchange vector with entrezid as names
 gene <- names(geneList)[abs(geneList) > 2]
-## 00: try with single data then use it as a template to do for all the data
+## 00: try with single data then use it as a template to do for all the data ####
 
 ## 01: prepare the data for HS vs LS male group
 fcmale <- fcdata %>% filter(group == "f0_male") %>% droplevels()
@@ -64,14 +64,14 @@ egobp_dn <- enrichGO(gene          = dngene,
                      pvalueCutoff  =  1,
                      qvalueCutoff  =  1,
                      readable      = TRUE)
-
+## Done ##
 ## extract gene symbol and entrezid from drosophila2.db for respective probes
 keytypes(drosophila2.db)
 
 ## purrr it ####
 fc_nest <- fcdata %>% nest(-group)
 
-## 3rd column as signfc: significant foldchange subset
+## 3rd column as signfc: significant foldchange subset ####
 sign_filter <- function(df) { df %>% 
                               filter(P.Value < 0.05 & 2^abs(logFC) >=1.3) %>%
                               arrange(desc(logFC))
@@ -119,7 +119,21 @@ fc_nest <- fc_nest %>% mutate(up_gobp = map2(uplist, data, df_enrichgo))
 ## 11th column: go enrichment for down regulated genes
 fc_nest <- fc_nest %>% mutate(dn_gobp = map2(dnlist, data, df_enrichgo))
 save(fc_nest,file = "./data/tidy_data/enrichgobp_all.RData")
+load("./data/tidy_data/enrichgobp_all.RData")
 
-## use unnest to extract 3 columns for each group
+## use unnest to extract 3 columns for each group ####
 ## gobp, up_gobp, dn_gopb
 names(fc_nest)
+
+updn_gobp <- fc_nest %>% 
+              mutate(gobpdf = map(gobp, function(x) as.data.frame(x))) %>%
+                select(group, gobpdf) %>%
+                  unnest(gobpdf)
+up_gobp   <- fc_nest %>% 
+              mutate(up_gobpdf = map(up_gobp, function(x) as.data.frame(x))) %>%
+                select(group, up_gobpdf) %>%
+                  unnest(up_gobpdf)
+dn_gobp   <- fc_nest %>% 
+              mutate(dn_gobpdf = map(dn_gobp, function(x) as.data.frame(x))) %>%
+                select(group, dn_gobpdf) %>%
+                  unnest(dn_gobpdf)
