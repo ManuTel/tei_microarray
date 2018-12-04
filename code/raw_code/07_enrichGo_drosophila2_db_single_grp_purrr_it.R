@@ -183,6 +183,7 @@ sign_gsea <- df_gsea %>%
               group_by(group) %>% 
                 filter(pvalue < 0.05) %>% 
                   arrange(group, NES, pvalue)
+## heatmap for LS data
 abc      <- sign_gsea %>% 
               group_by(ID) %>% 
                 filter(!str_detect(group, "HS")) %>% 
@@ -198,18 +199,24 @@ col_lab <- c("F0 Female", "F0 Male", "F1 Female", "F1 Male", "F2 Female", "F2 Ma
 dev.new(width=4, height=12)
 heatmap(as.matrix(pqr[,3:8]), margins = c(8,8), labRow = pqr$Description, labCol = col_lab,
         cexRow = 1.2, keep.dendro = FALSE, Colv = NA) # saved the image after editing texts in inkscape
+## heatmap for HS data
+mno <- sign_gsea %>% 
+  group_by(ID) %>% 
+  filter(!str_detect(group, "LS")) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  filter(n >=5)
+xyz <- sign_gsea %>% 
+  filter(ID %in% mno$ID & !str_detect(group, "LS")) %>% 
+  select(group, Description, setSize, NES) %>% 
+  spread(group, NES )
+heatmap(as.matrix(xyz[,3:8]), margins = c(8,8), labRow = xyz$Description, labCol = col_lab,
+        cexRow = 1.2, keep.dendro = FALSE, Colv = NA) ## saved in rough but nothing interesting
 
-#heatmap
-m <- as.matrix(pqr[3:8])
-rownames(m) <- pqr$Description
-
-gplots::heatmap.2(m,scale="none", Colv = FALSE, key = FALSE,margins = c(8,8), 
-          trace="none", dendrogram = 'none')
-## do the same analysis for gene-level fold change ####
+# do the same analysis for gene-level fold change ####
 df_fc  <- fc_nest %>%
             select(group, signfc) %>%
               unnest(signfc)
 abc1 <- df_fc %>% group_by(probe_id) %>% filter(!str_detect(group, "HS")) %>% summarise(n = n()) %>% 
             arrange(desc(n)) %>% filter(n ==5)
-df_fc %>% filter(probe_id %in% abc1$probe_id ) %>% select(group, probe_id, )
-abc1
+

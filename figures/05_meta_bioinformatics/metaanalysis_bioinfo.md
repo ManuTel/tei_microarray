@@ -7,5 +7,6 @@
         - only LS samples (6 samples: 2 F0, 2F1, 2F2)
         - at least has significant Normalized Enrichment Score (NES) in 5 samples out of six
         - red is downregulated, yellow is upregulated (you can look for the actual scale in the filtered dataframe)
-
+2. gsea_hs_only is same as above but for HS diet sample
+    - Nothing interesting here, svg and tiff are saved in 00_rough folder
  
