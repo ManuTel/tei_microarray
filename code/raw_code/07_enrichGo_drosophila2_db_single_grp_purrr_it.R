@@ -9,6 +9,7 @@ rm(list =ls())
 fcdata <- read.csv("./data/tidy_data/foldchange_df.csv")
 
 ## ClusterProfiler: Over-representation analysis using Affymetrix drosophila2.db annotations ####
+library(stringr)
 library(clusterProfiler)
 data(geneList) ## NOTE: the genelist is ordered foldchange vector with entrezid as names
 gene <- names(geneList)[abs(geneList) > 2]
@@ -119,7 +120,7 @@ fc_nest <- fc_nest %>% mutate(up_gobp = map2(uplist, data, df_enrichgo))
 ## 11th column: go enrichment for down regulated genes
 fc_nest <- fc_nest %>% mutate(dn_gobp = map2(dnlist, data, df_enrichgo))
 # save(fc_nest,file = "./data/tidy_data/enrichgobp_all.RData")
-load("./data/tidy_data/enrichgobp_all.RData")
+#load("./data/tidy_data/enrichgobp_all.RData")
 
 ## use unnest to extract 3 columns for each group ####
 ## gobp, up_gobp, dn_gopb
@@ -138,3 +139,75 @@ dn_gobp   <- fc_nest %>%
                 select(group, dn_gobpdf) %>%
                   unnest(dn_gobpdf)
 save(updn_gobp, up_gobp, dn_gobp,file = "./data/tidy_data/gobp_df.RData")
+
+
+## gsea analysis using gseGO and drosophila2.db ####
+## extract relevat columns form fc_nest data to work on
+fc_gsea <- fcdata %>% nest(-group)
+names(fc_gsea$data[[1]])
+fc_gsea <- fc_gsea %>%
+              mutate(genelist = map(data, function(df){df %>% select(probe_id, logFC) %>% 
+                                                          arrange(desc(logFC)) }))
+## extract logFC as a numeric vector
+pull_genelist <- function(df){
+                         glist <- pull(df, logFC)
+                         names(glist) <- as.character(df$probe_id)
+                         return(glist)
+                      }
+fc_gsea <- fc_gsea %>%
+            mutate(num_genelist = map(genelist, pull_genelist))
+
+gsego_list <- function(glist) {gseGO(geneList     = glist,
+                                     OrgDb        = drosophila2.db,
+                                     keyType      = "PROBEID", 
+                                     ont          = "BP",
+                                     nPerm        = 1000,
+                                     minGSSize    = 50,
+                                     maxGSSize    = 500,
+                                     pvalueCutoff = 1,
+                                     verbose      = TRUE)
+                               }
+head(fc_gsea$num_genelist[[2]])
+fc_gsea <- fc_gsea %>% mutate(gsebp = map(num_genelist, gsego_list))
+
+## extract all as dataframe
+df_gsea   <- fc_gsea %>% 
+                mutate(gsea_df = map(gsebp, function(x) as.data.frame(x))) %>%
+                select(group, gsea_df) %>%
+                unnest(gsea_df)
+names(df_gsea)
+df_gsea %>% group_by(group) %>% filter(pvalue < 0.05) %>% summarise(n = n(), up = sum(NES > 0), down = sum(NES < 0))
+sign_gsea <- df_gsea %>% 
+              group_by(group) %>% 
+                filter(pvalue < 0.05) %>% 
+                  arrange(group, NES, pvalue)
+abc      <- sign_gsea %>% 
+              group_by(ID) %>% 
+                filter(!str_detect(group, "HS")) %>% 
+                  summarise(n = n()) %>% 
+                    arrange(desc(n)) %>% 
+                      filter(n >=5)
+pqr <- sign_gsea %>% 
+        filter(ID %in% abc$ID & !str_detect(group, "HS")) %>% 
+          select(group, Description, setSize, NES) %>% 
+            spread(group, NES )
+heatmap(as.matrix(pqr[,3:8]), margins = c(8,8), labRow = pqr$Description)
+col_lab <- c("F0 Female", "F0 Male", "F1 Female", "F1 Male", "F2 Female", "F2 Male")
+dev.new(width=4, height=12)
+heatmap(as.matrix(pqr[,3:8]), margins = c(8,8), labRow = pqr$Description, labCol = col_lab,
+        cexRow = 1.2, keep.dendro = FALSE, Colv = NA) # saved the image after editing texts in inkscape
+
+#heatmap
+m <- as.matrix(pqr[3:8])
+rownames(m) <- pqr$Description
+
+gplots::heatmap.2(m,scale="none", Colv = FALSE, key = FALSE,margins = c(8,8), 
+          trace="none", dendrogram = 'none')
+## do the same analysis for gene-level fold change ####
+df_fc  <- fc_nest %>%
+            select(group, signfc) %>%
+              unnest(signfc)
+abc1 <- df_fc %>% group_by(probe_id) %>% filter(!str_detect(group, "HS")) %>% summarise(n = n()) %>% 
+            arrange(desc(n)) %>% filter(n ==5)
+df_fc %>% filter(probe_id %in% abc1$probe_id ) %>% select(group, probe_id, )
+abc1
