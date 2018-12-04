@@ -169,7 +169,9 @@ gsego_list <- function(glist) {gseGO(geneList     = glist,
                                }
 head(fc_gsea$num_genelist[[2]])
 fc_gsea <- fc_gsea %>% mutate(gsebp = map(num_genelist, gsego_list))
-
+fc_gsea_short <- fc_gsea %>% select(group, num_genelist, gsebp)
+object.size(fc_gsea_short)
+save(fc_gsea_short,file = "./data/tidy_data/gsea_short.RData")
 ## extract all as dataframe
 df_gsea   <- fc_gsea %>% 
                 mutate(gsea_df = map(gsebp, function(x) as.data.frame(x))) %>%
