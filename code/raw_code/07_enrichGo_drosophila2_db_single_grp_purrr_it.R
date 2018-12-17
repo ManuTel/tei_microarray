@@ -173,17 +173,25 @@ fc_gsea_short <- fc_gsea %>% select(group, num_genelist, gsebp)
 object.size(fc_gsea_short)
 save(fc_gsea_short,file = "./data/tidy_data/gsea_short.RData")
 ## extract all as dataframe
-df_gsea   <- fc_gsea %>% 
+load("./data/tidy_data/gsea_short.RData")
+
+df_gsea   <- fc_gsea_short %>% 
                 mutate(gsea_df = map(gsebp, function(x) as.data.frame(x))) %>%
                 select(group, gsea_df) %>%
                 unnest(gsea_df)
 names(df_gsea)
-df_gsea %>% group_by(group) %>% filter(pvalue < 0.05) %>% summarise(n = n(), up = sum(NES > 0), down = sum(NES < 0))
+df_gsea %>% 
+  group_by(group) %>% 
+  filter(pvalue < 0.05) %>% 
+  summarise(n    = n(), 
+            up   = sum(NES > 0), 
+            down = sum(NES < 0))
+
 sign_gsea <- df_gsea %>% 
               group_by(group) %>% 
                 filter(pvalue < 0.05) %>% 
                   arrange(group, NES, pvalue)
-## heatmap for LS data
+## heatmap for LS data ####
 abc      <- sign_gsea %>% 
               group_by(ID) %>% 
                 filter(!str_detect(group, "HS")) %>% 
@@ -199,7 +207,23 @@ col_lab <- c("F0 Female", "F0 Male", "F1 Female", "F1 Male", "F2 Female", "F2 Ma
 dev.new(width=4, height=12)
 heatmap(as.matrix(pqr[,3:8]), margins = c(8,8), labRow = pqr$Description, labCol = col_lab,
         cexRow = 1.2, keep.dendro = FALSE, Colv = NA) # saved the image after editing texts in inkscape
-## heatmap for HS data
+
+## heatmap improvement
+library(gplots)
+library(scales); show_col(pal_aaas("default")(2))
+
+palette_1 <- colorRamps::green2red(8)
+col_lab   <- c("F0 Female", "F0 Male", "F1 Female", "F1 Male", "F2 Female", "F2 Male")
+var1      <- c("#EE0000FF", "#EE0000FF","#3B4992FF","#3B4992FF","#3B4992FF","#3B4992FF")
+heatmap.2(mat_top20, trace ="none",breaks=breaks,col=my_palette, margins = c(6,16), key = TRUE,
+          symm=F,symkey=F,symbreaks=F, cexRow = 1.3, ColSideColors = var1)
+heatmap.2(as.matrix(pqr[,3:8]), trace = "none", Colv = FALSE, dendrogram = "none", 
+           labRow = pqr$Description, labCol = col_lab, 
+          col = palette_1, margins = c(2,22), cexRow = 1.2, key = FALSE )
+col <- pal_aaas(2)
+?pal_aaas
+
+## heatmap for HS data ####
 mno <- sign_gsea %>% 
   group_by(ID) %>% 
   filter(!str_detect(group, "LS")) %>% 
@@ -212,6 +236,10 @@ xyz <- sign_gsea %>%
   spread(group, NES )
 heatmap(as.matrix(xyz[,3:8]), margins = c(8,8), labRow = xyz$Description, labCol = col_lab,
         cexRow = 1.2, keep.dendro = FALSE, Colv = NA) ## saved in rough but nothing interesting
+
+
+
+
 
 # do the same analysis for gene-level fold change ####
 df_fc  <- fc_nest %>%
