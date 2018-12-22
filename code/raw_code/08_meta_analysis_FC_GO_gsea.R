@@ -19,7 +19,7 @@ names(fcgsea); str(fcgsea$num_genelist); head(fcgsea$gsebp[[1]])[,1:9]
 fcdata <- mutate(fcdata, signFC = as.factor(P.Value < 0.05 & 2^abs(logFC) >= 1.3))
 table(fcdata$group, fcdata$signFC)
 
-#f0 plots 
+## f0 plots 
 
 gg <- fcdata %>% 
   filter(group == "f1_maleHS") %>%
@@ -54,4 +54,5 @@ gg4 <- gg3 %+% filter(fcdata, group == "f2_femaleLS")
 gg4
 grid.arrange(gg3, gg4, ncol = 2)
 
+## Done still here ####
 

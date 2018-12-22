@@ -215,8 +215,7 @@ library(scales); show_col(pal_aaas("default")(2))
 palette_1 <- colorRamps::green2red(8)
 col_lab   <- c("F0 Female", "F0 Male", "F1 Female", "F1 Male", "F2 Female", "F2 Male")
 var1      <- c("#EE0000FF", "#EE0000FF","#3B4992FF","#3B4992FF","#3B4992FF","#3B4992FF")
-heatmap.2(mat_top20, trace ="none",breaks=breaks,col=my_palette, margins = c(6,16), key = TRUE,
-          symm=F,symkey=F,symbreaks=F, cexRow = 1.3, ColSideColors = var1)
+
 heatmap.2(as.matrix(pqr[,3:8]), trace = "none", Colv = FALSE, dendrogram = "none", 
            labRow = pqr$Description, labCol = col_lab, 
           col = palette_1, margins = c(2,22), cexRow = 1.2, key = FALSE )

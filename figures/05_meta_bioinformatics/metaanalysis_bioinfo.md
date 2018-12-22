@@ -9,4 +9,7 @@
         - red is downregulated, yellow is upregulated (you can look for the actual scale in the filtered dataframe)
 2. gsea_hs_only is same as above but for HS diet sample
     - Nothing interesting here, svg and tiff are saved in 00_rough folder
- 
+
+3. gsea_ls_only_3 is re-paletted version of gsea_ls_only
+    - the gsea_ls_only truncated from downside where there is NA for HS male group for better viewing
+  
