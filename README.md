@@ -3,8 +3,9 @@ All the microarray analysis related to Transgenerational epigenetic inheritance 
 
 The project deals with the gene expression analysis in Drosophila model of Transgenerational epigenetic inheritance. Tha main analysis consist of following differential gene expression profile
 
-    - **Case**: In F1 and F2 generation, Case means flies having High sugar diet fed paternal ancestry
-    - **Control**: means flies having control diet fed paternal ancestry.
+**Case**: In F1 and F2 generation, Case means flies having High sugar diet fed paternal ancestry
+
+**Control**: means flies having control diet fed paternal ancestry.
 
 | Sr.no.     | Generation   | Gender | Comparision      | Diet       |
 | ---------- |:------------:|:------:|:----------------:|:---------: |
